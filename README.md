@@ -1,56 +1,25 @@
-Medical Practice Directory Management
-Description
-This project is a console-based Medical Practice Directory Management system developed in C. It is designed to manage persistent data for doctors and patients by combining the power of C structures and binary file handling. The system allows for efficient data organization, storage, and retrieval, serving as a robust database for small medical practices.
+Medical Practice Directory 🏥
+A clean, efficient, and robust C-based management system for tracking Doctor and Patient records.
 
-Features
-Structured Data: Uses custom struct types to organize doctor and patient records.
+📋 About the Project
+This project provides a reliable solution for managing medical data. It focuses on:
 
-Persistent Storage: Data is stored using binary files (doctors.dat and patients.dat) to ensure information is saved on disk.
+Data Persistence: Using binary files to ensure your data stays safe on the disk.
 
-Interactive Menu: A user-friendly looping text interface for managing records.
+Structured Organization: Leveraging C structs to keep records organized.
 
-Operations:
+User Interaction: A simple, intuitive loop-based menu for daily operations.
 
-Create and add new entries.
+🚀 Key Capabilities
+Doctor Management: Add and display doctor registration details, specialty, and contact info.
 
-Display full lists of doctors and patients.
+Patient Management: Track patient IDs, age, medical history, and appointment dates.
 
-Getting Started
-Prerequisites
-You will need a C compiler installed (like gcc via MinGW).
+Binary Storage: High-performance data handling using .dat files.
 
-Installation & Compilation
-Download the code or clone this repository.
+🛠 Tech Stack
+Language: C
 
-Open your terminal or VS Code in the project directory.
+Storage: Binary Files (.dat)
 
-Compile the code using the following command:
-
-Bash
-gcc main.c -o MedicalDirectory.exe
-Run the program:
-
-Bash
-./MedicalDirectory.exe
-Usage
-Upon running the application, you will see a main menu:
-
-Add Doctor: Enter registration details, specialty, and contact information.
-
-Display Doctors: View all saved doctor records.
-
-Add Patient: Enter ID, personal details, illness type, and appointment date.
-
-Display Patients: View all saved patient records.
-
-Exit: Safely terminate the application.
-
-Project Structure
-Doctor Struct: Stores Registration Number, Name, Specialty, Address, Phone, and Email.
-
-Patient Struct: Stores ID, Name, Age, Address, Illness Type, Phone, and Appointment Date.
-
-Binary Files: The system writes and reads binary data to ensure data integrity and persistence.
-
-License
-Developed as part of the Algorithmic and Data Structure 2 module at the University of Mustapha Stambouli, Mascara.
+Compiler: GCC / MinGW
