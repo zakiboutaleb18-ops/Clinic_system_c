@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+// --- (les structure)
+typedef struct {
+    int regNumber;
+    char lastName[50];
+    char firstName[50];
+    char specialty[50];
+    char address[100];
+    char phone[15];
+    char email[50];
+} Doctor;
+
+
+typedef struct {
+    int id;
+    char lastName[50];
+    char firstName[50];
+    int age;
+    char address[100];
+    char illnessType[50];
+    char phone[15];
+    char appointmentDate[20];
+} Patient;
+
+// --- (doctor function)---
+void addDoctor() {
+    FILE *file = fopen("doctors.dat", "ab");
+    Doctor d;
+    printf("Registration Number: ");    scanf("%d", &d.regNumber);
+    printf("Last Name: ");              scanf("%s", d.lastName);
+    printf("First Name: ");             scanf("%s", d.firstName);
+    printf("Specialty: ");              scanf("%s", d.specialty);
+    printf("Address: ");                scanf("%s", d.address);
+    printf("Phone: ");                  scanf("%s", d.phone);
+    printf("Email: ");                  scanf("%s", d.email);
+    fwrite(&d, sizeof(Doctor), 1, file);
+    fclose(file);
+}
+
+void displayDoctors() {
+    FILE *file = fopen("doctors.dat", "rb");
+    Doctor d;
+    while(fread(&d, sizeof(Doctor), 1, file)) {
+        printf("Reg: %d | Name: %s %s | Specialty: %s\n", d.regNumber, d.lastName, d.firstName, d.specialty);
+    }
+    fclose(file);
+}
+
+// ---(patint function)---
+void addPatient() {
+    FILE *file = fopen("patients.dat", "ab");
+    Patient p;
+    printf("ID: ");                     scanf("%d", &p.id);
+    printf("Last Name: ");              scanf("%s", p.lastName);
+    printf("First Name: ");             scanf("%s", p.firstName);
+    printf("Age: ");                    scanf("%d", &p.age);
+    printf("Address: ");                scanf("%s", p.address);
+    printf("Illness Type: ");           scanf("%s", p.illnessType);
+    printf("Phone: ");                  scanf("%s", p.phone);
+    printf("Appointment Date: ");       scanf("%s", p.appointmentDate);
+    fwrite(&p, sizeof(Patient), 1, file);
+    fclose(file);
+}
+
+void displayPatients() {
+    FILE *file = fopen("patients.dat", "rb");
+    Patient p;
+    while(fread(&p, sizeof(Patient), 1, file)) {
+        printf("ID: %d | Name: %s %s | Illness: %s | Date: %s\n", p.id, p.lastName, p.firstName, p.illnessType, p.appointmentDate);
+    }
+    fclose(file);
+}
+
+// ---(app)---
+int main() {
+    int choice;
+
+    do {
+        printf("\n--- Medical Practice Directory ---\n");
+        printf("1. Add Doctor\n2. Display Doctors\n3. Add Patient\n4. Display Patients\n5. Exit\n");
+        printf("Choice: ");
+        scanf("%d", &choice);
+
+        switch(choice) {
+            case 1: addDoctor(); break;
+            case 2: displayDoctors(); break;
+            case 3: addPatient(); break;
+            case 4: displayPatients(); break;
+            case 5: printf("Exiting.\n"); break;
+            default: printf("Invalid choice!\n");
+        }
+    } while(choice != 5);
+
+
+    return 0;
+}
